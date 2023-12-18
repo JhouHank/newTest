@@ -1,16 +1,11 @@
 <script setup>
-import axios from "axios";
-import { ref, computed } from "vue";
+import { onMounted } from "vue";
+import { useFetchData } from "../composable/useFetchData";
+const { data, errorMsg, fetchInit } = useFetchData();
 
-const data = ref([]);
-const dataAsync = async () => {
-	try {
-		const response = await axios.get("https://randomuser.me/api/?results=3");
-		data.value = response; // 賦值給"data"的value屬性
-	} catch (err) {
-		console.log(err);
-	}
-};
+onMounted(() => {
+	fetchInit();
+});
 
 const changeFnc = (result) => {
 	result.gender = result.gender === "male" ? "female" : "male";
@@ -18,9 +13,9 @@ const changeFnc = (result) => {
 </script>
 <template>
 	<div>
-		<button class="btn btn-success btn-lg w-25 h-25" @click="dataAsync()">get</button>
+		<!-- <button class="btn btn-warning btn-lg w-25 h-25" @click="dataAsync()">get</button> -->
 		<div v-if="data.length === 0">
-			<div>嫩</div>
+			<div>Loading ...</div>
 		</div>
 		<div v-else>
 			<div v-for="result in data.data.results">
@@ -31,6 +26,7 @@ const changeFnc = (result) => {
 			</div>
 			<!-- <div>{{ data.data.results[0].gender }}</div> -->
 		</div>
+		<div v-if="errorMsg !== ''">{{ errorMsg }}</div>
 	</div>
 </template>
 <style scoped lang=""></style>
