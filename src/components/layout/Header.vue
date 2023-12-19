@@ -10,7 +10,6 @@ import { RouterLink } from "vue-router";
 		<RouterLink to="/isc">Component</RouterLink>
 		<RouterLink to="/model">Model</RouterLink>
 		<RouterLink to="/id">ID</RouterLink>
-		<RouterLink to="/map">Map</RouterLink>
 	</nav>
 </template>
 <style scoped></style>

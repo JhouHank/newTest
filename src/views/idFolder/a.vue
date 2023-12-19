@@ -1,13 +1,13 @@
 <script setup>
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 const router = useRouter();
-const route = useRoute();
 
 setTimeout(() => {
-	// 兩種都可以
+	// 下面這三種都可以
 	// router.push("/");
 	// router.push({ path: "/" });
-	router.push({ path: "/:id", query: { username: "mike" } });
+	router.push({ path: "/id", query: { username: "mike" } });
+	// 上面這一種寫法可以帶資料過去
 	// 還有一個replace 會把上一頁給移除
 }, 3000);
 </script>

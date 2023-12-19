@@ -1,19 +1,21 @@
 <script setup>
 import { ref } from "vue";
-const name = ref(null);
-const name2 = ref(null);
+const content = ref(null);
+const contentLazy = ref(null);
 
 const setName = (str) => {
-	name.value = str;
+	content.value = str;
 };
 </script>
 <template>
 	<div>
 		<form>
-			<input type="text" v-model="name" class="form-control w-25" />
-			<h2 class="mt-2">內容：{{ name }}</h2>
-			<input type="text" v-model.lazy="name2" class="form-control w-25" />
-			<h2 class="mt-2">lazy內容：{{ name2 }}</h2>
+			<p>下列兩個輸入框</p>
+			<p>映射到下面的內容，動作不一樣</p>
+			<input type="text" v-model="content" class="form-control w-25" />
+			<h2 class="mt-2">內容：{{ content }}</h2>
+			<input type="text" v-model.lazy="contentLazy" class="form-control w-25" />
+			<h2 class="mt-2">lazy內容：{{ contentLazy }}</h2>
 		</form>
 		<div>
 			<button @click="setName('jacky')" class="btn btn-primary">jacky</button>

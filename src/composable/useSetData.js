@@ -1,7 +1,7 @@
 import { ref } from "vue";
 
-export function useSetData(zxc) {
-	const count = ref(zxc);
+export function useSetData(oldCount) {
+	const count = ref(oldCount);
 
 	const setCount = (newCount) => {
 		count.value = newCount;
